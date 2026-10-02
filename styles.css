@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(#8412B0, #000);
+    background: linear-gradient(#123d70, #07111f);
     font-family: 'Consolas', sans-serif;
     margin: 0;
     padding: 0;
@@ -11,12 +11,12 @@ body {
 }
 
 h1 {
-    color: #FFF;
+    color: #eaf4ff;
     text-align: center;
     margin-top: 20px;
     font-size: 2.5em;
     display: inline;
-    text-shadow: 0 0 10px #FC199A, 0 0 20px #FC199A, 0 0 30px #FC199A, 0 0 40px #FF007F, 0 0 50px #FF007F;
+    text-shadow: 0 0 8px #287bd1, 0 0 18px #1c66b4, 0 0 28px rgba(35, 129, 220, 0.5);
 }
 
 .container {
@@ -31,16 +31,16 @@ h1 {
 
 .formContainer {
     text-align: center;
-    background-color: #FF007F;
+    background-color: #123f70;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.28);
     width: 20%;
     margin-right: 20px;
 }
 
 label {
-    color: #00FFFF;
+    color: #c8e8ff;
     font-size: 14px;
     margin-right: 10px;
 }
@@ -50,24 +50,27 @@ input {
     margin-right: 10px;
     margin-bottom: 15px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #3975a8;
     width: 100%;
     box-sizing: border-box;
+    background-color: #edf6ff;
+    color: #102a45;
 }
 
 button {
-    background-color: #FFCC00;
-    color: #8412B0;
+    background-color: #2878c7;
+    color: #ffffff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
     width: 100%;
+    font-weight: bold;
 }
 
 button:hover {
-    background-color: #FC199A;
+    background-color: #1b5b99;
     color: #fff;
 }
 
@@ -78,23 +81,23 @@ table {
 }
 
 th, td {
-    border: 1px solid #ddd;
+    border: 1px solid rgba(7, 24, 43, 0.5);
     padding: 12px 15px;
     text-align: left;
 }
 
 th {
-    background-color: #FC199A;
-    color: white;
+    background-color: #174f84;
+    color: #f2f8ff;
 }
 
 td {
-    background-color: #00FFFF;
-    color: #8412B0;
+    background-color: #80bee8;
+    color: #102a45;
 }
 
 .delete-btn {
-    background-color: #f0745e;
+    background-color: #356b9b;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -103,11 +106,11 @@ td {
 }
 
 .delete-btn:hover {
-    background-color: #ff0800;
+    background-color: #234f78;
 }
 
 
 #productsTable tbody tr {
-    background-color: #FFF;
-    color: #000;
+    background-color: #dceeff;
+    color: #102a45;
 }
