@@ -1,26 +1,41 @@
-//Function to load products from LocalStorage and display them in the table
-function loadProductTable() {
-    let products = JSON.parse(localStorage.getItem('products')) || []; //Search and found products from LocalStorage
-    const tableBody = document.querySelector('#productsTable tbody');
-    tableBody.innerHTML = ''; //Clear the table before adding new products
+// Load products from LocalStorage and display them as cards.
+function loadProductCards() {
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    const productsList = document.getElementById('productsList');
+    productsList.innerHTML = '';
+
+    if (products.length === 0) {
+        const emptyMessage = document.createElement('p');
+        emptyMessage.className = 'emptyMessage';
+        emptyMessage.textContent = 'Aún no hay productos. Agrega uno con el formulario.';
+        productsList.appendChild(emptyMessage);
+        return;
+    }
 
     products.forEach(product => {
-        //Create a table row
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${product.id}</td>
-            <td>${product.name}</td>
-            <td>$${product.price}</td>
-            <td><button class="delete-btn" data-id="${product.id}">Delete</button></td>
-        `;
-        
-        //Append the row to the table
-        tableBody.appendChild(row);
-    });
+        const card = document.createElement('article');
+        card.className = 'productCard';
 
-    //Add event listeners for delete buttons
-    document.querySelectorAll('.delete-btn').forEach(button => {
-        button.addEventListener('click', deleteProduct);
+        const productId = document.createElement('span');
+        productId.className = 'productId';
+        productId.textContent = `Producto #${product.id}`;
+
+        const productName = document.createElement('h2');
+        productName.className = 'productName';
+        productName.textContent = product.name;
+
+        const productPrice = document.createElement('p');
+        productPrice.className = 'productPrice';
+        productPrice.textContent = `$${product.price}`;
+
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'delete-btn';
+        deleteButton.dataset.id = product.id;
+        deleteButton.textContent = 'Eliminar';
+        deleteButton.addEventListener('click', deleteProduct);
+
+        card.append(productId, productName, productPrice, deleteButton);
+        productsList.appendChild(card);
     });
 }
 
@@ -31,7 +46,7 @@ function addProduct() {
 
     // Validate inputs
     if (!name || isNaN(price) || price <= 0) {
-        alert("Please enter a valid name and price.");
+        alert("Ingresa un nombre y un precio válidos.");
         return;
     }
 
@@ -53,8 +68,8 @@ function addProduct() {
     document.getElementById('name').value = '';
     document.getElementById('price').value = '';
 
-    //Update the table with the new product
-    loadProductTable();
+    // Update the product cards.
+    loadProductCards();
 }
 
 //Function to delete a product
@@ -68,12 +83,15 @@ function deleteProduct(event) {
     // Save the updated list back to LocalStorage
     localStorage.setItem('products', JSON.stringify(products));
 
-    // Reload the product table to reflect changes
-    loadProductTable();
+    // Reload the product cards to reflect changes.
+    loadProductCards();
 }
 
-//Event listener for the button click
-document.getElementById('addProduct').addEventListener('click', addProduct);
+// Submit the form with the button or the Enter key.
+document.getElementById('productForm').addEventListener('submit', event => {
+    event.preventDefault();
+    addProduct();
+});
 
-//Load products when the page loads
-loadProductTable();
+// Load products when the page loads.
+loadProductCards();
